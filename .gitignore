@@ -301,3 +301,7 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+BettterToneExample.componentinfo.xml
+*.cppproj
+__vm/.BettterToneExample.vsarduino.h
+*.xml
