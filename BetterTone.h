@@ -4,9 +4,11 @@
 #include <Arduino.h>
 #include "Pitches.h"
 
-int SingleNoteAmount = 1;
-int DoubleNoteAmount = 2;
-int MelodyNoteAmount = 4;
+int SingleNoteAmount = 2;
+int DoubleNoteAmount = 3;
+int MelodyNoteAmount = 7;
+
+int _pause = NP0;
 
 int betterNoteDurations[] = {4, 4, 4, 4};
 
@@ -32,7 +34,7 @@ class BetterTone
 	
 	for (int noteAmount = 0; noteAmount < 1; noteAmount++){  //Allows for self-correcting note playing
 		int betterNoteDuration = 1000 / betterNoteDurations[SingleNoteAmount];   // to calculate the note duration, take one second divided by the note type
-		tone(_pin, noteArray[_noteone], betterNoteDuration);
+		tone(_pin, noteArray[_noteone && _pause], betterNoteDuration);
 		}
 	}	
   private:
@@ -50,7 +52,7 @@ class DoubleTone
 	
      for (int noteAmount = 0; noteAmount < 2; noteAmount++){  //Allows for self-correcting note playing
 		  int betterNoteDuration = 1000 / betterNoteDurations[DoubleNoteAmount];   // to calculate the note duration, take one second divided by the note type
-		  tone(_pin, noteArray[_noteone && &&  _notetwo], betterNoteDuration);
+		  tone(_pin, noteArray[_noteone && _pause && _notetwo], betterNoteDuration);
 		}
 	}
   private;
@@ -68,7 +70,7 @@ class Melody
 	
 	 for (int noteAmount = 0; noteAmount < 4; noteAmount++){  //Allows for self-correcting note playing
 		  int betterNoteDuration = 1000 / betterNoteDurations[MelodyNoteAmount];   // to calculate the note duration, take one second divided by the note type
-		  tone(_pin, noteArray[_noteone && _notetwo && _notethree && _notefour], betterNoteDuration);
+		  tone(_pin, noteArray[_noteone && _pause && _notetwo && _pause && _notethree && _pause && _notefour], betterNoteDuration);
      delay(2000);
 		}
 	}
