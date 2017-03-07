@@ -33,6 +33,7 @@ class BetterTone
 	for (int noteAmount = 0; noteAmount < 1; noteAmount++){  //Allows for self-correcting note playing
 		int betterNoteDuration = 1000 / betterNoteDurations[SingleNoteAmount];   // to calculate the note duration, take one second divided by the note type
 		tone(_pin, noteArray[_noteone], betterNoteDuration);
+		delay(2000);
 		}
 	}	
   private:
@@ -45,14 +46,13 @@ class DoubleTone
 	DoubleTone(int pin, int noteone, int notetwo) : _pin(pin), _noteone(noteone), _notetwo(notetwo){
 	_pin = pin;
 	pinMode(pin, OUTPUT);
+	
 	_noteone = noteone; _notetwo = notetwo; 
 	
-     for (int noteAmount = 0; noteAmount < 2; noteAmount++){  //Allows for self-correcting note playing
+     for (int noteAmount = 0; noteAmount < 1; noteAmount++){  //Allows for self-correcting note playing
 		  int betterNoteDuration = 1000 / betterNoteDurations[DoubleNoteAmount];   // to calculate the note duration, take one second divided by the note type
-		  int pauseBetweenNotes = betterNoteDuration * 1.30;
-		  tone(_pin, noteArray[_noteone], betterNoteDuration);
-		  delay(pauseBetweenNotes);
-		  tone(_pin, noteArray[_notetwo], betterNoteDuration);
+		  tone(_pin, noteArray[_noteone && _notetwo], betterNoteDuration);
+		  delay(2000);
 		}
 	}
   private:
@@ -65,19 +65,13 @@ class Melody
 	Melody(int pin, int noteone, int notetwo, int notethree, int notefour) : _pin(pin), _noteone(noteone), _notetwo(notetwo), _notethree(notethree), _notefour(notefour){
 	_pin = pin;
 	pinMode(pin, OUTPUT);
+	
 	_noteone = noteone; _notetwo = notetwo; _notethree = notethree; _notefour = notefour;
 	
-	 for (int noteAmount = 0; noteAmount < 4; noteAmount++){  //Allows for self-correcting note playing
+	 for (int noteAmount = 0; noteAmount < 3; noteAmount++){  //Allows for self-correcting note playing
 		  int betterNoteDuration = 1000 / betterNoteDurations[MelodyNoteAmount];   // to calculate the note duration, take one second divided by the note type
-		  int pauseBetweenNotes = betterNoteDuration * 1.30;
-		  tone(_pin, noteArray[_noteone], betterNoteDuration);
-		  delay(pauseBetweenNotes);
-		  tone(_pin, noteArray[_notetwo], betterNoteDuration);
-		  delay(pauseBetweenNotes);
-		  tone(_pin, noteArray[_notethree], betterNoteDuration);
-		  delay(pauseBetweenNotes);
-		  tone(_pin, noteArray[_notefour], betterNoteDuration);
-     delay(2000);
+		  tone(_pin, noteArray[_noteone && _notetwo && _notethree && _notefour], betterNoteDuration);
+		  delay(2000);
 		}
 	}
   private:
