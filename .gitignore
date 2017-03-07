@@ -305,3 +305,4 @@ BettterToneExample.componentinfo.xml
 *.cppproj
 __vm/.BettterToneExample.vsarduino.h
 *.xml
+*.atsln
