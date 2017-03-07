@@ -1,6 +1,6 @@
 #include <Arduino.h>
-#include <BetterTone.h>
-#include <Pitches.h>
+#include "BetterTone.h"
+#include "Pitches.h"
 
 //Digital and Analog Pins Used on UNO Board
 const int buzzerPin = 8;    //Digital Pin 8 (No PWM)
