@@ -8,9 +8,9 @@ int SingleNoteAmount = 1;
 int DoubleNoteAmount = 2;
 int MelodyNoteAmount = 4;
 
-int betterNoteDurations = 4;
+int betterNoteDurations[] = {4, 4, 4, 4};
 
-int noteArray[] = {NA1, NA2, NA3, NA4, NA5, NA5, NA6, NA7,
+int noteArray[] = {NP0, NA1, NA2, NA3, NA4, NA5, NA5, NA6, NA7,
 				   NB0, NB1, NB2, NB3, NB4, NB5, NB6, NB7,
 				   NC1, NC2, NC3, NC4, NC5, NC6, NC7, NC8,
 				   ND1, ND2, ND3, ND4, ND5, ND6, ND7,
@@ -25,54 +25,54 @@ int noteArray[] = {NA1, NA2, NA3, NA4, NA5, NA5, NA6, NA7,
 
 class BetterTone
 {
-	int _pin, _noteone;
-	
-    public:
-    BetterTone(int pin, int noteone) : _pin(pin), _noteone(noteone){
+   public:
+   BetterTone(int pin, int noteone) : _pin(pin), _noteone(noteone){
 	_pin = pin; _noteone = noteone;
 	pinMode(pin, OUTPUT);	
 	
-	for (int noteAmount = 0; noteAmount < 2; noteAmount++){  //Allows for self-correcting note playing
-		int betterNoteDuration = 1000 / betterNoteDurations * SingleNoteAmount;   // to calculate the note duration, take one second divided by the note type
+	for (int noteAmount = 0; noteAmount < 1; noteAmount++){  //Allows for self-correcting note playing
+		int betterNoteDuration = 1000 / betterNoteDurations[SingleNoteAmount];   // to calculate the note duration, take one second divided by the note type
 		tone(_pin, noteArray[_noteone], betterNoteDuration);
-		delay(2000);
 		}
 	}	
+  private:
+  int _pin, _noteone;
 };
 
 class DoubleTone 
 {
-	int _pin, _noteone, _notetwo;
-	
 	public:
 	DoubleTone(int pin, int noteone, int notetwo) : _pin(pin), _noteone(noteone), _notetwo(notetwo){
+	NP0 = _pause;
 	_pin = pin;
 	pinMode(pin, OUTPUT);
 	_noteone = noteone; _notetwo = notetwo; 
 	
      for (int noteAmount = 0; noteAmount < 2; noteAmount++){  //Allows for self-correcting note playing
-		  int betterNoteDuration = 1000 / betterNoteDurations * DoubleNoteAmount;   // to calculate the note duration, take one second divided by the note type
-		  tone(_pin, noteArray[_noteone && _notetwo], betterNoteDuration);
-		  delay(2000);
+		  int betterNoteDuration = 1000 / betterNoteDurations[DoubleNoteAmount];   // to calculate the note duration, take one second divided by the note type
+		  tone(_pin, noteArray[_noteone && &&  _notetwo], betterNoteDuration);
 		}
 	}
+  private;
+  int _pin, _noteone, _notetwo;
 };
 
 class Melody
 {
-	int _pin, _noteone, _notetwo, _notethree, _notefour ;
-	
 	public:
 	Melody(int pin, int noteone, int notetwo, int notethree, int notefour) : _pin(pin), _noteone(noteone), _notetwo(notetwo), _notethree(notethree), _notefour(notefour){
+  NP0 = _pause;
 	_pin = pin;
 	pinMode(pin, OUTPUT);
 	_noteone = noteone; _notetwo = notetwo; _notethree = notethree; _notefour = notefour;
 	
-	 for (int noteAmount = 0; noteAmount < 2; noteAmount++){  //Allows for self-correcting note playing
-		  int betterNoteDuration = 1000 / betterNoteDurations * MelodyNoteAmount;   // to calculate the note duration, take one second divided by the note type
+	 for (int noteAmount = 0; noteAmount < 4; noteAmount++){  //Allows for self-correcting note playing
+		  int betterNoteDuration = 1000 / betterNoteDurations[MelodyNoteAmount];   // to calculate the note duration, take one second divided by the note type
 		  tone(_pin, noteArray[_noteone && _notetwo && _notethree && _notefour], betterNoteDuration);
-		  delay(2000);
+     delay(2000);
 		}
 	}
+  private:
+  int _pin, _noteone, _notetwo, _notethree, _notefour;
 };
 #endif

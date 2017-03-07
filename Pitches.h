@@ -1,6 +1,8 @@
 #ifndef _PITCHES_h
 #define _PITCHES_h
 
+int NP0 = 0; //Pause 'note'
+
 int NB0  = 31;
 int NC1  = 33;
 int NCS1 = 35;
